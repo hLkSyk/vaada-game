@@ -7,7 +7,19 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return "Hello, Vaada World!"
+# /game rotası
+@app.route('/game')
+def game():
+    # Eğer daha önce bir HTML sayfası tasarladıysan, render_template ile döndür
+    # Örnek olarak:
+    # return render_template("game.html")
+    
+    # Şimdilik basit bir metin döndürülüyor
+    return "Welcome to the Vaada Game! Your adventure begins here!"
 
+if __name__ == "__main__":
+    # Flask'ı dış bağlantılar için aç ve Render'ın istediği portta çalıştır
+    app.run(host="0.0.0.0", port=5000)
 if __name__ == "__main__":
     # 0.0.0.0 ile Flask'ı dış bağlantılara aç ve Render'ın beklentisi olan 5000 portunda çalıştır
     app.run(host="0.0.0.0", port=5000)
@@ -37,7 +49,7 @@ def home():
 
 @app.route("/game")
 def game():
-    return render_template("game.html")
+    return "Welcome to Vaada Game!"
 
 @app.route("/rank")
 def rank():
