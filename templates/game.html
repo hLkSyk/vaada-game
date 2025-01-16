@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vaada World</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        // Geri sayım için JavaScript
+        function startCountdown() {
+            const launchDate = new Date("2025-01-22T00:00:00").getTime();
+            const interval = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML =
+                    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById("countdown").innerHTML = "Game Started!";
+                }
+            }, 1000);
+        }
+
+        // Referans linkini kopyala
+        function copyReferralLink() {
+            const referralLink = document.getElementById("referralLink");
+            referralLink.select();
+            referralLink.setSelectionRange(0, 99999); // Mobil için
+            navigator.clipboard.writeText(referralLink.value).then(() => {
+                alert("Referral link copied to clipboard!");
+            });
+        }
+    </script>
+</head>
+<body onload="startCountdown()">
+    <h1>Vaada World</h1>
+    <p id="countdown" class="countdown"></p>
+
+    <!-- Karakterler -->
+    <div class="character">
+        <h3>Warrior 🛡️</h3>
+        <img src="/static/warrior.png" alt="Warrior" class="character-img">
+        <p>Strength and resilience.</p>
+    </div>
+    <div class="character">
+        <h3>Mage 🔮</h3>
+        <img src="/static/mage.png" alt="Mage" class="character-img">
+        <p>Master of magical arts.</p>
+    </div>
+    <div class="character">
+        <h3>Explorer 🗺️</h3>
+        <img src="/static/explorer.png" alt="Explorer" class="character-img">
+        <p>Speed and agility.</p>
+    </div>
+
+    <!-- Sosyal Medya Bağlantıları -->
+    <div class="social-icons">
+        <a href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank">
+            <img src="/static/telegram-icon.png" alt="Telegram">
+        </a>
+        <a href="https://twitter.com/YOUR_TWITTER_LINK" target="_blank">
+            <img src="/static/twitter-icon.png" alt="Twitter">
+        </a>
+    </div>
+
+    <!-- Referans Sistemi -->
+    <div class="referral">
+        <!-- Referans İkonu -->
+        <div class="referral-icon">
+            <img src="/static/refer-icon.png" alt="Refer Friends">
+        </div>
+
+        <h3>Your Referral Link</h3>
+        <p>Share this link to invite your friends:</p>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <input type="text" id="referralLink" value="https://yourgame.com/referral?user_id=12345" readonly style="flex: 1; margin-right: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <button onclick="copyReferralLink()" style="padding: 10px 15px; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Copy
+            </button>
+        </div>
+    </div>
+
+    <!-- Telegram'a Yönlendirme -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="https://t.me/share/url?url=https://yourgame.com/referral?user_id=12345" target="_blank" style="display: inline-block; padding: 10px 20px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px;">
+            Share on Telegram
+        </a>
+    </div>
+</body>
+</html>
