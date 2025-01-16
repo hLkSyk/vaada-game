@@ -1,5 +1,16 @@
 from flask import Flask, render_template, request
 import sqlite3
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello, Vaada World!"
+
+if __name__ == "__main__":
+    # 0.0.0.0 ile Flask'ı dış bağlantılara aç ve Render'ın beklentisi olan 5000 portunda çalıştır
+    app.run(host="0.0.0.0", port=5000)
 
 app = Flask(__name__)
 
